@@ -173,6 +173,10 @@
         setupTimeBackground();
         setInterval(setupTimeBackground, 30000);
         $('.container-fluid').on('click', 'button', saveEvent);
+        
+        var load = localStorage.getItem('events' + index);
+        console.log(load);
+        
 
       });
 
@@ -199,21 +203,22 @@
         }
 
       }
-
+      var index = "";
       var events = [];
       function saveEvent(event){
+        event.preventDefault();
         $(".container").toggleClass('d-block');
         var fade = setInterval(function(){
           $(".container").toggleClass('d-block');
           clearInterval(fade);
         }, 3000);
-        var index = $(event.target).attr('data-index');
+        index = $(event.target).attr('data-index');
         var text = $('.form-control').eq(index).val();
-        events.push(text);
-        localStorage.setItem('events', events);
-        load = localStorage.getItem('events').split(',');
-        console.log(load[load.length - 1]);
-        $('.form-control').eq(index).val(load[load.length - 1]);
+        localStorage.setItem('events' + index, text);
+        load = localStorage.getItem('events' + index);
+        // console.log(load);
+        
+        
 
       }
     </script>
