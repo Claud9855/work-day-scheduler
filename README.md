@@ -18,4 +18,7 @@
 
 ## URL
 -------
-copy and paste url: 
+copy and paste url: https://claud9855.github.io/work-day-scheduler/
+
+## Screenshot
+--------------
