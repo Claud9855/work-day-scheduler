@@ -209,7 +209,6 @@
         var text = $('.form-control').eq(index).val();
         localStorage.setItem('events' + index, text);
         var load = localStorage.getItem('events' + index);
-        console.log(load);
         $('.form-control').eq(index).val(load);
       }
     </script>
