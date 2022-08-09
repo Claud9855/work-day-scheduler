@@ -173,11 +173,6 @@
         setupTimeBackground();
         setInterval(setupTimeBackground, 30000);
         $('.container-fluid').on('click', 'button', saveEvent);
-        
-        var load = localStorage.getItem('events' + index);
-        console.log(load);
-        
-
       });
 
       function displayCurrentTime(){
@@ -203,8 +198,6 @@
         }
 
       }
-      var index = "";
-      var events = [];
       function saveEvent(event){
         event.preventDefault();
         $(".container").toggleClass('d-block');
@@ -212,14 +205,12 @@
           $(".container").toggleClass('d-block');
           clearInterval(fade);
         }, 3000);
-        index = $(event.target).attr('data-index');
+        var index = $(event.target).attr('data-index');
         var text = $('.form-control').eq(index).val();
         localStorage.setItem('events' + index, text);
-        load = localStorage.getItem('events' + index);
-        // console.log(load);
-        
-        
-
+        var load = localStorage.getItem('events' + index);
+        console.log(load);
+        $('.form-control').eq(index).val(load);
       }
     </script>
   </body>
