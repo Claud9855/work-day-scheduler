@@ -3,7 +3,17 @@ $(document).ready(function(){
     setupTimeBackground();
     setInterval(setupTimeBackground, 30000);
     $('.container-fluid').on('click', 'button', saveEvent);
+    var loadContent = function(){
+      if(localStorage.getItem('events-' + index) !== null){
+        $('.form-control').eq(index).val(localStorage.getItem('events-' + index));
+      }
+      else {
+        return;
+      }
+    };
+    loadContent();
   });
+
 
 function displayCurrentTime(){
   var timeDisplay = $('#currentDay');
@@ -28,7 +38,7 @@ function setupTimeBackground(){
   }
 
 }
-
+  var index;
   function saveEvent(event){
     event.preventDefault();
     $(".container").toggleClass('d-block');
@@ -38,17 +48,9 @@ function setupTimeBackground(){
     }, 3000);
     var index = $(event.target).attr('data-index');
     var text = $('.form-control').eq(index).val();
+    if(index === null && text === null){
+      return;
+    }
     localStorage.setItem('events-' + index, text);
-  
-    var loadContent = function(){
-      if(localStorage.getItem('events-' + index) !== null){
-        $('.form-control').eq(index).val(localStorage.getItem('events-' + index));
-      }
-      else {
-        return;
-      }
-    };
-    // $('.form-control').eq(index).val(load);
-    return loadContent;
 
   }
